@@ -1,0 +1,38 @@
+TOP 5 MOST SOLD PRODUCTS
+=======================
+Source file: sales.csv (100 sales records, 2024-01-01 to 2024-01-20)
+Database: shop | Collection: sales (100 documents verified)
+
+Ranking method: each CSV row = one unit sold. Grouped by product, counted
+units, sorted by units sold (descending). Ties broken by total revenue.
+
+RANK  PRODUCT   UNITS SOLD  UNIT PRICE  TOTAL REVENUE
+----  --------  ----------  ----------  -------------
+ 1    milk          7         $6.99       $48.93
+ 2    soap          6         $5.49       $32.94
+ 3    bread         5         $7.49       $37.45
+ 4    rice          4        $22.90       $91.60
+ 5    eggs          4        $14.99       $59.96
+
+Notes
+-----
+- Milk is the clear leader with 7 units, followed by soap (6) and bread (5).
+- Rank 5 was a three-way tie at 4 units: rice ($91.60), eggs ($59.96) and
+  shampoo ($43.96). Rice and eggs take the spots because the tiebreaker
+  (total revenue) favors them; shampoo is the first product outside the top 5.
+- By revenue alone the order differs substantially: rice ($91.60) and eggs
+  ($59.96) are the highest-value products despite lower unit counts, while
+  soap ($32.94) generates the least revenue of the top 5.
+
+Full top-10 for context
+-----------------------
+1. milk        7 units   $48.93
+2. soap        6 units   $32.94
+3. bread       5 units   $37.45
+4. rice        4 units   $91.60
+5. eggs        4 units   $59.96
+6. shampoo     4 units   $43.96
+7. olive_oil   3 units   $86.70
+8. cheese      3 units   $59.70
+9. coffee      3 units   $56.70
+10. oranges    3 units   $26.97

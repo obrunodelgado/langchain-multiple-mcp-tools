@@ -1,0 +1,69 @@
+RELATORIO: Produtos mais baratos vs. mais caros - sales-complete.csv
+=====================================================================
+
+Fonte: data/sales-complete.csv (100 registros de venda, 39 produtos distintos, 01-20/01/2024)
+Colecao MongoDB: shop.sales_complete (100 documentos)
+
+METODOLOGIA
+-----------
+Cada linha do arquivo representa uma unidade vendida de um produto (id, product, price, date).
+"Vendas" foi medido como numero de unidades vendidas (contagem de linhas por produto).
+Comparacao feita de duas formas complementares:
+  (A) Extremos: 13 produtos mais baratos vs. 13 produtos mais caros.
+  (B) Faixas: baratos (preco <= 8,99) vs. caros (preco > 8,99).
+
+(A) EXTREMOS - 13 MAIS BARATOS vs. 13 MAIS CAROS
+------------------------------------------------
+13 produtos MAIS BARATOS (preco medio R$ 4,90):
+  salt 2,49 (1 un) | water 2,99 (2) | baking_powder 3,49 (1) | toothpaste 3,99 (2)
+  tomato_sauce 4,29 (3) | lettuce 4,49 (3) | yogurt 4,99 (2) | soap 5,49 (6)
+  chocolate 5,49 (1) | carrots 5,99 (2) | bananas 6,49 (2) | pasta 6,49 (3) | milk 6,99 (7)
+  => Total: 35 unidades vendidas
+
+13 produtos MAIS CAROS (preco medio R$ 19,51):
+  tea 9,49 (2 un) | tomatoes 9,99 (2) | orange_juice 9,99 (2) | beans 9,99 (2)
+  oats 10,49 (1) | shampoo 10,99 (4) | eggs 14,99 (4) | cereal 16,90 (2)
+  coffee 18,90 (3) | cheese 19,90 (3) | rice 22,90 (4) | chicken_breast 24,90 (2)
+  olive_oil 28,90 (3)
+  => Total: 34 unidades vendidas
+
+  RESULTADO: praticamente EMPATE - 35 vs 34 unidades (diferenca de 1 unidade, ~3%).
+  Media por produto: 2,69 un (baratos) vs. 2,62 un (caros).
+
+(B) FAIXAS DE PRECO
+-------------------
+  Baratos (<= R$ 8,99): 24 produtos | 62 unidades | receita R$ 404,98
+                         media 2,58 un/produto | preco medio R$ 6,32
+  Caros   (>  R$ 8,99): 15 produtos | 38 unidades | receita R$ 701,23
+                         media 2,53 un/produto | preco medio R$ 18,21
+
+  RESULTADO: os produtos baratos vendem ligeiramente MAIS em volume de unidades
+  (62 vs 38; 2,58 vs 2,53 unidades por produto), mas a diferenca por produto e
+  marginal (~2%). Em RECEITA, os produtos caros dominam: R$ 701,23 vs R$ 404,98
+  (os caros geram ~73% mais receita com 39% menos unidades).
+
+PRODUTOS MAIS VENDIDOS (unidades)
+---------------------------------
+  milk 7 | soap 6 | bread 5 | shampoo 4 | eggs 4 | rice 4
+  (milk R$ 6,99, soap R$ 5,49 e bread R$ 7,49 estao na faixa barata;
+   eggs R$ 14,99 e rice R$ 22,90 estao na faixa cara - mistura de faixas)
+
+PRODUTOS COM MAIOR RECEITA
+--------------------------
+  rice 91,60 | olive_oil 86,70 | fish_fillet 69,80 | eggs 59,96 | cheese 59,70 | ground_beef 59,80
+
+CONCLUSAO
+---------
+1. NAO ha diferenca relevante em VOLUME de vendas entre produtos caros e baratos:
+   a contagem de unidades e praticamente identica (35 vs 34 nos extremos;
+   62 vs 38 nas faixas, com medias por produto de 2,58 vs 2,53).
+   Portanto, a hipotese de que "produtos baratos vendem muito mais" NAO se confirma
+   neste conjunto de dados.
+2. Os produtos BARATOS vendem um pouco mais em numero de unidades e tem maior
+   amplitude de catalogo (24 vs 15 produtos), o que sustenta o volume total.
+3. Os produtos CAROS vendem quase o mesmo em unidades, mas geram muito mais
+   RECEITA (R$ 701,23 vs R$ 404,98) - ~73% mais receita.
+   Ou seja: baratos = volume/receita baixa por unidade; caros = receita alta.
+4. A distribuicao de vendas e bastante uniforme (1 a 7 unidades por produto),
+   sugerindo compras recorrentes de cesta basica em que itens de todas as
+   faixas de preco sao adquiridos na mesma proporcao.
